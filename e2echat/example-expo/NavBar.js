@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Platform, SafeAreaView } from 'react-native'
+import { Text, Platform, SafeAreaView, View, Image } from 'react-native'
 import NavBar, { NavTitle, NavButton } from 'react-native-nav'
 import Constants from 'expo-constants'
 
@@ -10,14 +10,17 @@ export default function NavBarCustom() {
   return (
     <SafeAreaView style={{ backgroundColor: '#f5f5f5' }}>
       <NavBar>
-        <NavButton />
-        <NavTitle>
-          💬 Gifted Chat{'\n'}
+        <NavButton style={{}} onPress={}>
+          <Image source={require('/Users/xavihub/WebstormProjects/Hackathon/e2echat/E2EChat/e2echat/media/menu_button_take_2.png')}
+          style={{width: 40, height: 40}}/>
+        </NavButton>
+        <NavTitle style={{flex: 1}}>
+          E2E Chat ;){'\n'}
           <Text style={{ fontSize: 10, color: '#aaa' }}>
             ({Constants.expoVersion})
           </Text>
         </NavTitle>
-        <NavButton />
+        <View style={{width:40, height: 40}}/>
       </NavBar>
     </SafeAreaView>
   )
