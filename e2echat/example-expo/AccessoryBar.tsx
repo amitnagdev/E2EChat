@@ -1,6 +1,7 @@
 import { MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
 import { StyleSheet, TouchableOpacity, View, Image } from 'react-native'
+import EmojiMenu from "../EmojiMenu";
 
 import {
   getLocationAsync,
@@ -8,15 +9,15 @@ import {
   takePictureAsync,
 } from './mediaUtils'
 
-export default class AccessoryBar extends React.Component {
+export default class AccessoryBar extends React.Component<{swapToPage}> {
   render() {
-    const { onSend, isTyping } = this.props
+    const { onSend, isTyping } = this.props;
 
     return (
       <View style={styles.container}>
         <Button onPress={() => pickImageAsync(onSend)} name='photo' />
         <Button onPress={() => takePictureAsync(onSend)} name='camera' />
-          <TouchableOpacity style={{width: 30,height: 30}}>
+          <TouchableOpacity style={{width: 30,height: 30}} onPress={() => {this.props.swapToPage(<EmojiMenu/>)}}>
               <Image source={require('../media/emojiapptransparent.png')} style={{width: 30, height: 30}}/>
           </TouchableOpacity>
         <Button

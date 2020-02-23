@@ -168,7 +168,7 @@ export default class MessagesPage extends Component<{swapToPage, recipient}> {
     }
 
     renderAccessory = () => (
-        <AccessoryBar onSend={this.onSendFromUser} isTyping={this.setIsTyping} />
+        <AccessoryBar onSend={this.onSendFromUser} isTyping={this.setIsTyping} swapToPage={this.props.swapToPage}/>
     )
 
     renderCustomActions = props =>

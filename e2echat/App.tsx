@@ -10,7 +10,7 @@ const App = () => {
     setCurrentPage(nextPage);
   }
 
-  const [currentPage, setCurrentPage] = useState(<EmojiMenu swapToPage={switchPage}/>);
+  const [currentPage, setCurrentPage] = useState(<Login swapToPage={switchPage}/>);
 
   return (
       currentPage

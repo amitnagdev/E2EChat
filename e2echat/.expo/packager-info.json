@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19003,
+  "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 16032,
-  "expoServerNgrokUrl": "https://xi-dj5.anonymous.e2echat.exp.direct",
-  "packagerNgrokUrl": "https://packager.xi-dj5.anonymous.e2echat.exp.direct",
-  "ngrokPid": 732
+  "packagerPort": 19003,
+  "packagerPid": 78684,
+  "expoServerNgrokUrl": "https://xi-dj5.xavihub.e2echat.exp.direct",
+  "packagerNgrokUrl": "https://packager.xi-dj5.xavihub.e2echat.exp.direct",
+  "ngrokPid": 78696
 }
