@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Login from "./Login";
 import MessagesPage from './MessagesPage'
 
 const App = () => {
@@ -7,7 +8,7 @@ const App = () => {
     setCurrentPage(nextPage);
   }
 
-  const [currentPage, setCurrentPage] = useState(<MessagesPage swapToPage={switchPage}/>);
+  const [currentPage, setCurrentPage] = useState(<Login swapToPage={switchPage}/>);
 
   return (
       currentPage
