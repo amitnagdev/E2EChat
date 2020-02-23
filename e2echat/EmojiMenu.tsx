@@ -11,7 +11,7 @@ const RenderBox = ({pic}) => {
        require("./media/emojis/tongueemoji.png"),
    ]
     return(
-      <View style={{backgroundColor:"blue", height: 100, width: 100, borderWidth: 1, borderColor: 'white'}}>
+      <View style={{backgroundColor:"black", height: 100, width: 100, borderWidth: 1, borderColor: 'white', margin:10}}>
           <TouchableOpacity onPress={null}>
              <Image source={directories[pic]} style={{width: 100, height: 100}}/>
           </TouchableOpacity>
@@ -25,7 +25,7 @@ const EmojiMenu = ({swapToPage}) => {
     return(
         <View style={{backgroundColor: "rgba(0,0,0,1.0)", flex: 1, borderTopWidth: 60}}>
             <Text style={{fontWeight: 'bold', color: "white", fontSize: 50, textAlign: 'center', textAlignVertical: 'center'}}>Emoji Menu</Text>
-            <FlatList data={data} renderItem={({item}) => <RenderBox pic={item}/>} scrollEnabled={false} contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}></FlatList>
+            <FlatList data={data} renderItem={({item}) => <RenderBox pic={item}/>} scrollEnabled={false} style={{marginTop: 20}} contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}></FlatList>
 
         </View>
     )

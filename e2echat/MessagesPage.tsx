@@ -85,7 +85,8 @@ export default class MessagesPage extends Component<{swapToPage, recipient}> {
     }
 
     onSend = (messages = []) => {
-        const step = this.state.step + 1
+        let recipientID = this.props.recipient.name; // HESS THIS is the ID of the recipient you asked for.
+        const step = this.state.step + 1;
         this.setState((previousState: any) => {
             const sentMessages = [{ ...messages[0], sent: true, received: true }]
             return {
@@ -99,7 +100,7 @@ export default class MessagesPage extends Component<{swapToPage, recipient}> {
         })
         // for demo purpose
         // setTimeout(() => this.botSend(step), Math.round(Math.random() * 1000))
-    }
+    };
 
     botSend = (step = 0) => {
         const newMessage = (messagesData as IMessage[])
