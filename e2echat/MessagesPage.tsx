@@ -85,42 +85,9 @@ export default class MessagesPage extends Component<{swapToPage, recipient}> {
     }
 
     onSend = (messages = []) => {
+        let recipientID = this.props.recipient.name; // HESS THIS is the ID of the recipient you asked for.
         const step = this.state.step + 1;
-        onSend = (messages = []) => {
-            const step = this.state.step + 1;
-            (async () => {
-                await fetch('http://3.18.223.203:8080/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                        // 'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: JSON.stringify({"username": "amit", "pubKey": "tempKey"}),
-                });
-            })();
-            (async () => {
-                await fetch('http://3.18.223.203:8080/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                        // 'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: JSON.stringify({"encryptedMessage": messages[0].text, "recipient":"amit", "sender": "amit",}),
-                });
-            })();
-            (async () => {
-                let response = await fetch('http://3.18.223.203:8080/pullMessages', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                        // 'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: JSON.stringify({"username":"amit"}),
-                });
-                console.log(await response.json());
-            })();
-            
-            this.setState((previousState: any) => {
+        this.setState((previousState: any) => {
             const sentMessages = [{ ...messages[0], sent: true, received: true }]
             return {
                 messages: GiftedChat.append(
