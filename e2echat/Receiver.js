@@ -68,10 +68,4 @@ const getPublicData = (async (name) => {
 export {sendPublicRec};
 export {e2eDec};
 
-sendPublicSen(recipient, myid);
-e2eEnc(recipient, myid);
 
-import {sendPublicSen} from "./Sender.js"
-import {e2eEnc} from "./Sender.js"
-import {sendPublicRec} from "./Receiver.js"
-import {e2eDec} from "./Receiver.js"
