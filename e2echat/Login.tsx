@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Text, TextInput, View} from "react-native";
 import {CustomButton} from "./CustomButton";
-import MessagesPage from "./MessagesPage";
+import Menu from "./Menu";
 import CreatAccount from "./CreateAccount";
 
 
@@ -30,7 +30,7 @@ const Login = ({swapToPage}) => {
                     />
                     <CustomButton
                         title="Login"
-                        onPress={() => {swapToPage(<MessagesPage swapToPage={swapToPage}/>)}}
+                        onPress={() => {swapToPage(<Menu swapToPage={swapToPage}/>)}}
                         style={{borderWidth: 1, marginTop:10}}
                         textStyle={{fontSize: 18}}
                      />

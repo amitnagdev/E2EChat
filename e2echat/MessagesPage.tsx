@@ -29,7 +29,7 @@ const otherUser = {
     avatar: 'https://facebook.github.io/react/img/logo_og.png',
 }
 
-export default class MessagesPage extends Component<{swapToPage}> {
+export default class MessagesPage extends Component<{swapToPage, recipient}> {
 
 
 
@@ -243,7 +243,7 @@ export default class MessagesPage extends Component<{swapToPage}> {
                 accessibilityLabel='main'
                 testID='main'
             >
-                <NavBar swapToPage={this.props.swapToPage}/>
+                <NavBar swapToPage={this.props.swapToPage} title={this.props.recipient.name}/>
                 <GiftedChat
                     messages={this.state.messages}
                     onSend={this.onSend}
