@@ -100,7 +100,12 @@
   },
   "dependencies": {
     "@expo/react-native-action-sheet": "3.5.0",
+    "endcrypt": "^1.2.3",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-e2e": "^1.2.15",
     "moment": "^2.19.0",
+    "node-fetch": "^2.6.0",
     "prop-types": "15.7.2",
     "react-native-communications": "2.2.1",
     "react-native-iphone-x-helper": "^1.2.0",

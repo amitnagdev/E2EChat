@@ -9,6 +9,7 @@ import CustomView from './example-expo/CustomView'
 import NavBar from './example-expo/NavBar'
 import messagesData from './example-expo/data/messages'
 import earlierMessages from './example-expo/data/earlierMessages'
+import {text} from "react-native-communications";
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
@@ -79,12 +80,49 @@ export default class App extends Component {
         })
       }
     }, 1000) // simulating network
-  }
+  };
+
 
   onSend = (messages = []) => {
-    const step = this.state.step + 1
+    const step = this.state.step + 1;
+    (async () => {
+      await fetch('http://3.18.223.203:8080/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({"username": "amit", "pubKey": "tempKey"}),
+      });
+    })();
+    (async () => {
+      await fetch('http://3.18.223.203:8080/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({"encryptedMessage": messages[0].text, "recipient":"amit", "sender": "amit",}),
+      });
+    })();
+    (async () => {
+      let response = await fetch('http://3.18.223.203:8080/pullMessages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({"username":"amit"}),
+      });
+      console.log(await response.json());
+    })();
+
+
+
     this.setState((previousState: any) => {
-      const sentMessages = [{ ...messages[0], sent: true, received: true }]
+      const sentMessages = [{ ...messages[0], sent: true, received: true }];
+
+
       return {
         messages: GiftedChat.append(
           previousState.messages,
@@ -93,10 +131,8 @@ export default class App extends Component {
         ),
         step,
       }
-    })
-    // for demo purpose
-    // setTimeout(() => this.botSend(step), Math.round(Math.random() * 1000))
-  }
+    });
+  };
 
   botSend = (step = 0) => {
     const newMessage = (messagesData as IMessage[])
@@ -269,3 +305,5 @@ export default class App extends Component {
     )
   }
 }
+
+
