@@ -3,6 +3,7 @@ import Login from "./Login";
 import MessagesPage from './MessagesPage'
 import AppStore from "./AppStore";
 import EmojiMenu from "./EmojiMenu";
+import Menu from "./Menu";
 
 const App = () => {
 
@@ -10,7 +11,7 @@ const App = () => {
     setCurrentPage(nextPage);
   }
 
-  const [currentPage, setCurrentPage] = useState(<Login swapToPage={switchPage}/>);
+  const [currentPage, setCurrentPage] = useState(<Menu swapToPage={switchPage}/>);
 
   return (
       currentPage

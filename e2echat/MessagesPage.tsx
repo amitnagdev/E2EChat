@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, Platform } from 'react-native'
 import { Bubble, GiftedChat, SystemMessage, IMessage } from './src'
 import {sendPublicSen} from "./Sender.js"
 import {e2eEnc} from "./Sender.js"
+import {getMessage} from "./Receiver.js"
 import {sendPublicRec} from "./Receiver.js"
 import {e2eDec} from "./Receiver.js"
 
@@ -58,6 +59,8 @@ export default class MessagesPage extends Component<{swapToPage, recipient}> {
             appIsReady: true,
             isTyping: false,
         })
+
+        this.timer = setInterval(()=> this.getItems(), 1000);
     }
 
     componentWillUnmount() {

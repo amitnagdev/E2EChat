@@ -1,6 +1,7 @@
 import {e2eEnc, sendPublicSen} from "./Sender";
 
-const crypto = require('crypto');
+import './shim.js'
+import crypto from 'crypto'
 var aesjs = require('aes-js');
 const assert = require('assert').strict;
 
