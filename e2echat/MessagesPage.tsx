@@ -85,8 +85,42 @@ export default class MessagesPage extends Component<{swapToPage}> {
     }
 
     onSend = (messages = []) => {
-        const step = this.state.step + 1
-        this.setState((previousState: any) => {
+        const step = this.state.step + 1;
+        onSend = (messages = []) => {
+            const step = this.state.step + 1;
+            (async () => {
+                await fetch('http://3.18.223.203:8080/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify({"username": "amit", "pubKey": "tempKey"}),
+                });
+            })();
+            (async () => {
+                await fetch('http://3.18.223.203:8080/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify({"encryptedMessage": messages[0].text, "recipient":"amit", "sender": "amit",}),
+                });
+            })();
+            (async () => {
+                let response = await fetch('http://3.18.223.203:8080/pullMessages', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify({"username":"amit"}),
+                });
+                console.log(await response.json());
+            })();
+            
+            this.setState((previousState: any) => {
             const sentMessages = [{ ...messages[0], sent: true, received: true }]
             return {
                 messages: GiftedChat.append(
@@ -99,7 +133,7 @@ export default class MessagesPage extends Component<{swapToPage}> {
         })
         // for demo purpose
         // setTimeout(() => this.botSend(step), Math.round(Math.random() * 1000))
-    }
+    };
 
     botSend = (step = 0) => {
         const newMessage = (messagesData as IMessage[])
