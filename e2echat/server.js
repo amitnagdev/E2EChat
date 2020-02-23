@@ -7,6 +7,7 @@ const { exec } = require('child_process');
 
 global.userMap = new Map();
 global.newMessages = new Map();
+global.userCredentials = new Map();
 
 
 
@@ -54,5 +55,24 @@ app.post('/pullMessages', (req, res) => {
     let reqUser = req.body.username;
     console.log();
     res.send(global.newMessages.get(reqUser));
+});
+
+app.post('/login', (req, res) => {
+   let username = req.body.username;
+   let password = req.body.password;
+
+   if (global.userCredentials.get(username) === password)
+});
+
+app.post('/signup', (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    if (!global.userCredentials.get(username)) {
+        global.userCredentials.set(username, password);
+        res.send('success');
+    } else {
+        res.send('Error: User already has an account.');
+    }
 });
 app.listen(port);
