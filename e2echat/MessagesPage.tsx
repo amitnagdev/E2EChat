@@ -85,7 +85,7 @@ export default class MessagesPage extends Component<{swapToPage, recipient}> {
     }
 
     onSend = (messages = []) => {
-        let recipientID = this.props.recipient.name; // HESS THIS is the ID of the recipient you asked for.
+        let recipient = this.props.recipient.name; // HESS THIS is the ID of the recipient you asked for.
         const step = this.state.step + 1;
         this.setState((previousState: any) => {
             const sentMessages = [{ ...messages[0], sent: true, received: true }]
