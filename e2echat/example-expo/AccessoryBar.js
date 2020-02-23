@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View, Image } from 'react-native'
 
 import {
   getLocationAsync,
@@ -16,7 +16,9 @@ export default class AccessoryBar extends React.Component {
       <View style={styles.container}>
         <Button onPress={() => pickImageAsync(onSend)} name='photo' />
         <Button onPress={() => takePictureAsync(onSend)} name='camera' />
-        <Button onPress={() => getLocationAsync(onSend)} name='my-location' />
+          <TouchableOpacity style={{width: 30,height: 30}}>
+              <Image source={require('../media/emojiapptransparent.png')} style={{width: 30, height: 30}}/>
+          </TouchableOpacity>
         <Button
           onPress={() => {
             isTyping()
