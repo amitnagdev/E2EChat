@@ -1,8 +1,25 @@
-import React, { Component } from 'react'
-import {Text, TextInput, View} from "react-native";
+import React, {Component, useState} from 'react'
+import {Text, TextInput, View, Alert} from "react-native";
 import {CustomButton} from "./CustomButton";
 
 const CreatAccount = ({swapToPage}) => {
+        const [username, setUsername] = useState('')
+        const [password1, setPassword1] = useState('')
+        const [password2, setPassword2] = useState('')
+        const checkPasswords = (password1, password2) =>{
+                if(password1 == password2){
+                        //passwords match, implement create account here
+                }
+                else{
+                        Alert.alert(
+                            'Error',
+                            'Passwords do not match',
+                            [
+                                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                        );
+                }
+        }
 
         return(
             <View style={{backgroundColor: "rgba(0,0,0,1.0)", flex: 1, borderTopWidth: 60}}>
@@ -13,20 +30,23 @@ const CreatAccount = ({swapToPage}) => {
                 <TextInput style={{height: 40, borderBottomColor: 'white', borderWidth: 1, color: "white", marginHorizontal: 60,}}
                            placeholder={" Type username "}
                            placeholderTextColor={"grey"}
+                           onChangeText={(username)=>setUsername(username)}
                 />
                 <Text style={{color: 'white', fontSize: 20, marginHorizontal:60, marginTop:40}}>Create Password</Text>
                 <TextInput secureTextEntry={true} style={{height: 40, borderBottomColor: 'white', borderWidth: 1, color: "white", marginHorizontal: 60,}}
                            placeholder={" Type password "}
                            placeholderTextColor={"grey"}
+                           onChangeText={(password1)=>setPassword1(password1)}
                 />
                 <Text style={{color: 'white', fontSize: 20, marginHorizontal:60, marginTop:40}}>Re-enter password</Text>
                 <TextInput secureTextEntry={true} style={{height: 40, borderBottomColor: 'white', borderWidth: 1, color: "white", marginHorizontal: 60,}}
                            placeholder={" Re-type password "}
                            placeholderTextColor={"grey"}
+                           onChangeText={(password2)=>setPassword2(password2)}
                 />
                 <CustomButton
                     title="Create Your Account"
-                    onPress={() => null}
+                    onPress={() => checkPasswords(password1, password2)}
                     style={{borderWidth: 1, marginTop:30, marginHorizontal: 100}}
                     textStyle={{fontSize: 18}}
                 />
