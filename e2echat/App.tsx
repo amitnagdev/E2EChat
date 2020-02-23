@@ -1,6 +1,6 @@
 import { AppLoading, Asset, Linking } from 'expo'
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Platform } from 'react-native'
+import {StyleSheet, View, Text, Platform, Button} from 'react-native'
 import { Bubble, GiftedChat, SystemMessage, IMessage } from './src'
 
 import AccessoryBar from './example-expo/AccessoryBar'
@@ -9,6 +9,7 @@ import CustomView from './example-expo/CustomView'
 import NavBar from './example-expo/NavBar'
 import messagesData from './example-expo/data/messages'
 import earlierMessages from './example-expo/data/earlierMessages'
+import Login from "./Login";
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
@@ -240,31 +241,32 @@ export default class App extends Component {
         accessibilityLabel='main'
         testID='main'
       >
-        <NavBar />
-        <GiftedChat
-          messages={this.state.messages}
-          onSend={this.onSend}
-          loadEarlier={this.state.loadEarlier}
-          onLoadEarlier={this.onLoadEarlier}
-          isLoadingEarlier={this.state.isLoadingEarlier}
-          parsePatterns={this.parsePatterns}
-          user={user}
-          scrollToBottom
-          onLongPressAvatar={user => alert(JSON.stringify(user))}
-          onPressAvatar={() => alert('short press')}
-          onQuickReply={this.onQuickReply}
-          keyboardShouldPersistTaps='never'
-          renderAccessory={Platform.OS === 'web' ? null : this.renderAccessory}
-          renderActions={this.renderCustomActions}
-          renderBubble={this.renderBubble}
-          renderSystemMessage={this.renderSystemMessage}
-          renderCustomView={this.renderCustomView}
-          quickReplyStyle={{ borderRadius: 2 }}
-          renderQuickReplySend={this.renderQuickReplySend}
-          inverted={Platform.OS !== 'web'}
-          timeTextStyle={{ left: { color: 'red' }, right: { color: 'yellow' } }}
-          isTyping={this.state.isTyping}
-        />
+        <Login></Login>
+        {/*<NavBar />*/}
+        {/*<GiftedChat*/}
+        {/*  messages={this.state.messages}*/}
+        {/*  onSend={this.onSend}*/}
+        {/*  loadEarlier={this.state.loadEarlier}*/}
+        {/*  onLoadEarlier={this.onLoadEarlier}*/}
+        {/*  isLoadingEarlier={this.state.isLoadingEarlier}*/}
+        {/*  parsePatterns={this.parsePatterns}*/}
+        {/*  user={user}*/}
+        {/*  scrollToBottom*/}
+        {/*  onLongPressAvatar={user => alert(JSON.stringify(user))}*/}
+        {/*  onPressAvatar={() => alert('short press')}*/}
+        {/*  onQuickReply={this.onQuickReply}*/}
+        {/*  keyboardShouldPersistTaps='never'*/}
+        {/*  renderAccessory={Platform.OS === 'web' ? null : this.renderAccessory}*/}
+        {/*  renderActions={this.renderCustomActions}*/}
+        {/*  renderBubble={this.renderBubble}*/}
+        {/*  renderSystemMessage={this.renderSystemMessage}*/}
+        {/*  renderCustomView={this.renderCustomView}*/}
+        {/*  quickReplyStyle={{ borderRadius: 2 }}*/}
+        {/*  renderQuickReplySend={this.renderQuickReplySend}*/}
+        {/*  inverted={Platform.OS !== 'web'}*/}
+        {/*  timeTextStyle={{ left: { color: 'red' }, right: { color: 'yellow' } }}*/}
+        {/*  isTyping={this.state.isTyping}*/}
+        {/*/>*/}
       </View>
     )
   }
