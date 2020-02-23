@@ -10,6 +10,7 @@ import NavBar from './example-expo/NavBar'
 import messagesData from './example-expo/data/messages'
 import earlierMessages from './example-expo/data/earlierMessages'
 import Login from "./Login";
+import CreatAccount from "./CreateAccount";
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
@@ -241,7 +242,7 @@ export default class App extends Component {
         accessibilityLabel='main'
         testID='main'
       >
-        <Login></Login>
+        <CreatAccount></CreatAccount>
         {/*<NavBar />*/}
         {/*<GiftedChat*/}
         {/*  messages={this.state.messages}*/}

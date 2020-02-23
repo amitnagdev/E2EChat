@@ -18,7 +18,7 @@ export default class Login extends React.Component {
                                placeholderTextColor={"grey"}
                     />
                     <Text style={{color:'white', fontSize: 20, marginHorizontal: 60, marginTop: 20}}>Password</Text>
-                    <TextInput style={{height: 40, borderBottomColor: 'white', borderWidth: 1, color: "white", marginHorizontal: 60}}
+                    <TextInput secureTextEntry={true} style={{height: 40, borderBottomColor: 'white', borderWidth: 1, color: "white", marginHorizontal: 60}}
                                placeholder={" Enter password "}
                                placeholderTextColor={"grey"}
                     />
@@ -31,7 +31,7 @@ export default class Login extends React.Component {
                     <CustomButton
                         title="Login"
                         onPress={() => null}
-                        style={{borderWidth: 1, marginTop:10}}
+                        style={{borderWidth: 1, marginTop:10, marginHorizontal: 140}}
                         textStyle={{fontSize: 18}}
                      />
 
