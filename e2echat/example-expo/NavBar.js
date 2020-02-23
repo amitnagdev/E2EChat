@@ -1,23 +1,27 @@
 import React from 'react'
-import { Text, Platform, SafeAreaView } from 'react-native'
+import { Text, Platform, SafeAreaView, View, Image } from 'react-native'
 import NavBar, { NavTitle, NavButton } from 'react-native-nav'
 import Constants from 'expo-constants'
+import Menu from '../Menu'
 
-export default function NavBarCustom() {
+export default function NavBarCustom({swapToPage}) {
   if (Platform.OS === 'web') {
     return null
   }
   return (
     <SafeAreaView style={{ backgroundColor: '#f5f5f5' }}>
       <NavBar>
-        <NavButton />
-        <NavTitle>
-          💬 Gifted Chat{'\n'}
+        <NavButton style={{}} onPress={() => {swapToPage(<Menu/>)}}>
+          <Image source={require('../media/menu_button_take_2.png')}
+          style={{width: 40, height: 40}}/>
+        </NavButton>
+        <NavTitle style={{flex: 1}}>
+          E2E Chat ;){'\n'}
           <Text style={{ fontSize: 10, color: '#aaa' }}>
             ({Constants.expoVersion})
           </Text>
         </NavTitle>
-        <NavButton />
+        <View style={{width:40, height: 40}}/>
       </NavBar>
     </SafeAreaView>
   )

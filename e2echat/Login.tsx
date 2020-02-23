@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import {Text, TextInput, View} from "react-native";
 import {CustomButton} from "./CustomButton";
+import MessagesPage from "./MessagesPage";
+import CreatAccount from "./CreateAccount";
 
 
-export default class Login extends React.Component {
+const Login = ({swapToPage}) => {
 
-    render() {
-
-        return (
+    return (
             <View style={{backgroundColor: "rgba(0,0,0,1.0)", flex: 1, borderTopWidth: 60}}>
                     <Text style={{fontWeight: 'bold', color: "white", fontSize: 50, textAlign: 'center', textAlignVertical: 'center'}}>
                         Login
@@ -24,21 +24,22 @@ export default class Login extends React.Component {
                     />
                     <CustomButton
                         title="Create Account"
-                        onPress={() => null }
+                        onPress={() => {swapToPage(<CreatAccount swapToPage={swapToPage}/>)} }
                         style={{borderWidth: 0, marginTop: 10}}
                         textStyle={{textDecorationLine: 'underline', fontSize: 18}}
                     />
                     <CustomButton
                         title="Login"
-                        onPress={() => null}
-                        style={{borderWidth: 1, marginTop:10, marginHorizontal: 140}}
+                        onPress={() => {swapToPage(<MessagesPage swapToPage={swapToPage}/>)}}
+                        style={{borderWidth: 1, marginTop:10}}
                         textStyle={{fontSize: 18}}
                      />
 
             </View>
-        )
-    }
-}
+    );
+};
+
+export default Login;
 
 
 
