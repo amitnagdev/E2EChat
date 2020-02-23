@@ -2,13 +2,6 @@ import { AppLoading, Asset, Linking } from 'expo'
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Platform } from 'react-native'
 import { Bubble, GiftedChat, SystemMessage, IMessage } from './src'
-import {sendPublicSen} from "./Sender.js"
-import {e2eEnc} from "./Sender.js"
-import {sendPublicRec} from "./Receiver.js"
-import {e2eDec} from "./Receiver.js"
-
-
-
 
 import AccessoryBar from './example-expo/AccessoryBar'
 import CustomActions from './example-expo/CustomActions'
@@ -36,7 +29,7 @@ const otherUser = {
     avatar: 'https://facebook.github.io/react/img/logo_og.png',
 }
 
-export default class MessagesPage extends Component<{swapToPage}> {
+export default class MessagesPage extends Component<{swapToPage, recipient}> {
 
 
 
@@ -92,13 +85,9 @@ export default class MessagesPage extends Component<{swapToPage}> {
     }
 
     onSend = (messages = []) => {
+        let recipient = this.props.recipient.name; // HESS THIS is the ID of the recipient you asked for.
         const step = this.state.step + 1;
-        onSend = (messages = []) => {
-            const step = this.state.step + 1;
-            let unencryptedMessage = messages[0].text;
-            sendPublicSen(recipient, myid);
-            e2eEnc(recipient, myid);
-            this.setState((previousState: any) => {
+        this.setState((previousState: any) => {
             const sentMessages = [{ ...messages[0], sent: true, received: true }]
             return {
                 messages: GiftedChat.append(
@@ -255,7 +244,7 @@ export default class MessagesPage extends Component<{swapToPage}> {
                 accessibilityLabel='main'
                 testID='main'
             >
-                <NavBar swapToPage={this.props.swapToPage}/>
+                <NavBar swapToPage={this.props.swapToPage} title={this.props.recipient.name}/>
                 <GiftedChat
                     messages={this.state.messages}
                     onSend={this.onSend}

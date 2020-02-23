@@ -7,8 +7,20 @@ const CreatAccount = ({swapToPage}) => {
         const [password1, setPassword1] = useState('')
         const [password2, setPassword2] = useState('')
         const checkPasswords = (password1, password2) =>{
-                if(password1 == password2){
-                        //passwords match, implement create account here
+                if(password1 === password2){
+                        (async () => {
+                                let accountCreationStatus = await fetch('http://3.18.223.203:8080/signup', {
+                                        method: 'POST',
+                                        headers: {
+                                                'Content-Type': 'application/json'
+                                                // 'Content-Type': 'application/x-www-form-urlencoded',
+                                        },
+                                        body: JSON.stringify({"username": username, "password": password1}),
+                                });
+                                if (accountCreationStatus !== 'success') {
+                                        // TODO create an alert that forces user to try again becuase username is taken
+                                }
+                        });
                 }
                 else{
                         Alert.alert(
