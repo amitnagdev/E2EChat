@@ -4,6 +4,7 @@ import {Dimensions} from "react-native";
 import MessagesPage from "./MessagesPage";
 import NavBar, { NavTitle, NavButton } from 'react-native-nav'
 import AddConvo from "./AddConvo";
+import AppStore from "./AppStore";
 
 let {width, height} = Dimensions.get("window");
 
@@ -15,7 +16,7 @@ const MenuNavBar = ({swapToPage}) => {
     return (
         <SafeAreaView style={{ backgroundColor: '#f5f5f5' }}>
             <NavBar>
-                <NavButton style={{width: 40, height: 40}}>
+                <NavButton style={{width: 40, height: 40}} onPress={() => {swapToPage(<AppStore swapToPage={swapToPage}/>)}}>
                     <Image source={require('./media/storeiconlightmode.png')} style={{width: 40, height: 40}}/>
                 </NavButton>
                 <NavTitle style={{flex: 1}}>
