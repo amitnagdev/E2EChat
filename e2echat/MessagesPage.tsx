@@ -2,6 +2,10 @@ import { AppLoading, Asset, Linking } from 'expo'
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Platform } from 'react-native'
 import { Bubble, GiftedChat, SystemMessage, IMessage } from './src'
+import {sendPublicSen} from "./Sender.js"
+import {e2eEnc} from "./Sender.js"
+import {sendPublicRec} from "./Receiver.js"
+import {e2eDec} from "./Receiver.js"
 
 import AccessoryBar from './example-expo/AccessoryBar'
 import CustomActions from './example-expo/CustomActions'
@@ -87,6 +91,8 @@ export default class MessagesPage extends Component<{swapToPage, recipient}> {
     onSend = (messages = []) => {
         let recipient = this.props.recipient.name; // HESS THIS is the ID of the recipient you asked for.
         const step = this.state.step + 1;
+        sendPublicSen(recipient, myid);
+        e2eEnc(recipient, myid);
         this.setState((previousState: any) => {
             const sentMessages = [{ ...messages[0], sent: true, received: true }]
             return {
