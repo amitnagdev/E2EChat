@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'black',
         borderColor: 'white',
-        marginHorizontal: 140
+
 
     },
 
