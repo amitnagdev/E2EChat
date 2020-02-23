@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Text, TextInput, View} from "react-native";
 import {CustomButton} from "./CustomButton";
 import MessagesPage from "./MessagesPage";
+import CreatAccount from "./CreateAccount";
 
 
 const Login = ({swapToPage}) => {
@@ -23,7 +24,7 @@ const Login = ({swapToPage}) => {
                     />
                     <CustomButton
                         title="Create Account"
-                        onPress={() => null }
+                        onPress={() => {swapToPage(<CreatAccount swapToPage={swapToPage}/>)} }
                         style={{borderWidth: 0, marginTop: 10}}
                         textStyle={{textDecorationLine: 'underline', fontSize: 18}}
                     />
