@@ -7,6 +7,7 @@ const { exec } = require('child_process');
 
 global.userMap = new Map();
 global.newMessages = new Map();
+global.publicData = new Map();
 
 
 
@@ -55,4 +56,21 @@ app.post('/pullMessages', (req, res) => {
     console.log();
     res.send(global.newMessages.get(reqUser));
 });
+
+app.post('/sendPublicData', (req, res) => {
+    let recipientIV = req.body.recIV;
+    let recipientGenerator = req.body.recGen;
+    let recipientPrime = req.body.recPrime;
+    let senderKey = req.body.pubKey;
+    global.newMessages.set(recipient, JSON.stringify({"recIV": recipientIV, "recGen": recipientGenerator, "recPrime": recipientPrime, "pubKey": senderKey}));
+    console.log();
+    res.send(global.newMessages.get(reqUser));
+});
+
+app.post('/pullPublicData', (req, res) => {
+    let reqUser = req.body.username;
+    console.log();
+    res.send(global.publicData.get(reqUser));
+});
+
 app.listen(port);
