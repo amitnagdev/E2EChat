@@ -17,10 +17,18 @@ const CreatAccount = ({swapToPage}) => {
                                         },
                                         body: JSON.stringify({"username": username, "password": password1}),
                                 });
-                                if (accountCreationStatus !== 'success') {
+                                if (await accountCreationStatus.json() !== 'success') {
                                         // TODO create an alert that forces user to try again becuase username is taken
+                                        Alert.alert(
+                                            'Error',
+                                            'Username taken',
+                                            [
+                                                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                                            ],
+                                        );
+
                                 }
-                        });
+                        })();
                 }
                 else{
                         Alert.alert(

@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react'
-import {Text, TextInput, View} from "react-native";
+import {Text, TextInput, View, Alert} from "react-native";
 import {CustomButton} from "./CustomButton";
 import Menu from "./Menu";
 import CreatAccount from "./CreateAccount";
@@ -10,7 +10,9 @@ const Login = ({swapToPage}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const authenticate = () => {
+        console.log('auth');
         (async () => {
+            console.log('async');
             let accountCreationStatus = await fetch('http://3.18.223.203:8080/login', {
                 method: 'POST',
                 headers: {
@@ -19,13 +21,20 @@ const Login = ({swapToPage}) => {
                 },
                 body: JSON.stringify({"username": username, "password": password}),
             });
-            if (accountCreationStatus !== 'success') {
+            if (await accountCreationStatus.json() !== 'success') {
                 // TODO create an alert that forces user to try again becuase username or password is wrong
+                Alert.alert(
+                    'Error',
+                    'Incorrect username or password',
+                    [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    ],
+                );
             } else {
                 swapToPage(<Menu swapToPage={swapToPage}/>);
             }
-        });
-    }
+        })();
+    };
     return (
             <View style={{backgroundColor: "rgba(0,0,0,1.0)", flex: 1, borderTopWidth: 60}}>
                     <Text style={{fontWeight: 'bold', color: "white", fontSize: 50, textAlign: 'center', textAlignVertical: 'center'}}>
